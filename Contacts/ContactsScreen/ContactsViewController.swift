@@ -1,6 +1,7 @@
 import UIKit
 
 class ContactsViewController: UIViewController {
+    
     var viewModel = ContactsViewModel()
     
     //MARK: Views
@@ -17,14 +18,14 @@ class ContactsViewController: UIViewController {
     private lazy var searсhController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
-        searchController.searchBar.placeholder =  LocalizeStrings.ContactsViewController.search
+        searchController.searchBar.placeholder = LocalizeStrings.ContactsViewController.search
         return searchController
     }()
     
     private lazy var addButton: UIBarButtonItem = {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
-                                        action: #selector(addTapped))
+                                        action: #selector(tapAddButton))
         return addButton
     }()
 
@@ -52,13 +53,12 @@ class ContactsViewController: UIViewController {
         title = LocalizeStrings.ContactsViewController.contactsTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.rightBarButtonItem = addButton
-        navigationItem.searchController = self.searсhController
+        navigationItem.searchController = searсhController
 
         view.addSubview(tableView)
     }
     
     private func makeConstraints() {
-        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -67,10 +67,11 @@ class ContactsViewController: UIViewController {
         ])
     }
     
-    @objc func addTapped() {
+    @objc func tapAddButton() {
         let controller = ContactsInfoFormViewController()
         controller.delegate = self
-        navigationController?.present(controller, animated: true)
+        let navController = UINavigationController(rootViewController: controller)
+        navigationController?.present(navController, animated: true)
     }
 }
 
@@ -82,34 +83,18 @@ extension ContactsViewController: ContactsInfoFormViewControllerDelegate {
     }
 }
 
-// MARK: - UITableViewDelegate, UITableViewDataSource
+// MARK: -  UITableViewDataSource
 
-extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
+extension ContactsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return viewModel.alphabetSigns[section]
     }
     
-
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return viewModel.alphabetSigns
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        let sign = viewModel.alphabetSigns[indexPath.section]
-        
-        if let names = viewModel.dictionary[sign] {
-            let selectedName = names[indexPath.row].fullName
-            
-            let controller = ContactsDetailViewController()
-            controller.delegate = self
-            controller.title = selectedName
-            navigationController?.pushViewController(controller, animated: true)
-        }
-    }
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.alphabetSigns.count
     }
@@ -134,7 +119,7 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
 
             viewModel.allCountContacts = allCounts - 1
             let countConctactsNumber = viewModel.allCountContacts
-            cell.setText("\(countConctactsNumber) контактов")
+            cell.setText("\(countConctactsNumber) \(LocalizeStrings.ContactsViewController.contactsText)")
           
             return cell
         }
@@ -146,6 +131,26 @@ extension ContactsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+}
+
+// MARK: - UITableViewDelegate
+extension ContactsViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let sign = viewModel.alphabetSigns[indexPath.section]
+        
+        if let names = viewModel.dictionary[sign] {
+            let selectedName = names[indexPath.row].fullName
+            
+            let controller = ContactsDetailViewController()
+            controller.delegate = self
+            controller.title = selectedName
+            navigationController?.pushViewController(controller, animated: true)
+        }
+    }
+
 }
 
 // MARK: - UISearchResultsUpdating

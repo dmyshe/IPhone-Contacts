@@ -1,11 +1,11 @@
-import UIKit
+import Foundation
 
 struct Contact {
     
     var name: String
     var surName: String
     var company: String?
-    var image: UIImage = UIImage(systemName: "person.circle.fill")!
+    var image: String = "person.circle.fill"
    
     var fullName: String {
         return "\(name) \(surName)"

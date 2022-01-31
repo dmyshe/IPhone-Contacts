@@ -13,93 +13,36 @@ class ContactsInfoFormViewController: UIViewController {
     //MARK: Views
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.circle.fill")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageView.image = Constants.UI.Images.personIcon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var addImageButton: UIButton = {
         let button = UIButton()
-        button.setTitle(LocalizeStrings.ContactsViewController.addPhoto, for: .normal)
+        button.setTitle(LocalizeStrings.ContactsInfoFormViewController.addPhoto, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
-    private lazy var cancelButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(LocalizeStrings.ContactsViewController.cancel, for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tapCancelButton), for: .touchUpInside)
+    
+    private lazy var cancelButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: LocalizeStrings.ContactsInfoFormViewController.cancel,
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(tapCancelButton))
         return button
     }()
     
-    private lazy var doneButton: UIButton = {
-        let button = UIButton()
-        button.setTitle(LocalizeStrings.ContactsViewController.done, for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.setTitleColor(.gray, for: .disabled)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(self, action: #selector(tapDoneButton), for: .touchUpInside)
+    private lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(title: LocalizeStrings.ContactsInfoFormViewController.done,
+                                     style: .plain,
+                                     target: self,
+                                     action: #selector(tapDoneButton))
         return button
     }()
-    
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = LocalizeStrings.ContactsViewController.create
-        label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-        
-    }()
-    
-    private lazy var nameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = LocalizeStrings.ContactsViewController.name
-        textField.backgroundColor = .white
-        textField.delegate = self
-        return textField
-    }()
-    
-    private lazy var surnameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = LocalizeStrings.ContactsViewController.surname
-        textField.backgroundColor = .white
-        textField.delegate = self
-        return textField
-    }()
-    
-    private lazy var companyTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = LocalizeStrings.ContactsViewController.company
-        textField.backgroundColor = .white
-        textField.delegate = self
-        return textField
-    }()
-    
-    private lazy var contactTextFieldsStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [nameTextField,
-                                                   surnameTextField,
-                                                   companyTextField])
-        stack.axis = .vertical
-        stack.spacing = 8
-        stack.distribution = .fillEqually
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
-    private lazy var titleStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [cancelButton,
-                                                   titleLabel,
-                                                   doneButton])
-        stack.axis = .horizontal
-        stack.spacing = 26
-        stack.distribution = .equalCentering
-        stack.translatesAutoresizingMaskIntoConstraints = false
-        return stack
-    }()
-    
+
     private lazy var photoStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [contactImage,
                                                    addImageButton])
@@ -109,6 +52,16 @@ class ContactsInfoFormViewController: UIViewController {
         stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UserAttributeViewCell.self,
+                           forCellReuseIdentifier: UserAttributeViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
     
     override func viewDidLoad() {
@@ -122,8 +75,8 @@ class ContactsInfoFormViewController: UIViewController {
     }
     
     @objc func tapDoneButton() {
-        let name = nameTextField.text ?? ""
-        let surName = surnameTextField.text ?? ""
+        let name =  viewModel.name
+        let surName = viewModel.surname
         let contact = Contact(name: name, surName: surName)
         delegate?.addContact(contact)
         dismiss(animated: true)
@@ -131,76 +84,87 @@ class ContactsInfoFormViewController: UIViewController {
     
     private func setupUserInterface() {
         view.backgroundColor = .systemGray6
+        
+        title = LocalizeStrings.ContactsInfoFormViewController.create
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.rightBarButtonItem = doneButton
+        
         view.addSubview(photoStackView)
-        view.addSubview(contactTextFieldsStack)
-        view.addSubview(titleStackView)
+        view.addSubview(tableView)
     }
     
     private func makeConstraints() {
-        
         NSLayoutConstraint.activate([
-            titleStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.UI.Layout.defaultPadding),
-            titleStackView.leftAnchor.constraint(equalTo: view.leftAnchor,constant: Constants.UI.Layout.defaultOffset),
-            titleStackView.rightAnchor.constraint(equalTo: view.rightAnchor,constant: -Constants.UI.Layout.defaultOffset),
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        
-            
-            photoStackView.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: Constants.UI.Layout.defaultPadding),
+            photoStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: Constants.UI.Layout.defaultPadding),
             photoStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      
             
             contactImage.heightAnchor.constraint(equalToConstant: 200),
             contactImage.widthAnchor.constraint(equalToConstant: 200),
-        
-
-            contactTextFieldsStack.topAnchor.constraint(equalTo: addImageButton.bottomAnchor, constant: Constants.UI.Layout.defaultPadding),
-            contactTextFieldsStack.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.UI.Layout.defaultPadding),
-            contactTextFieldsStack.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.UI.Layout.defaultPadding),
-            
-
-            nameTextField.heightAnchor.constraint(equalToConstant: 44)
+      
+            tableView.topAnchor.constraint(equalTo: photoStackView.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
 
-
 // MARK: - UITextFieldDelegate
 
 extension ContactsInfoFormViewController: UITextFieldDelegate {
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.placeholder = ""
-    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let text = textField.text ?? ""
         let textRange = Range(range, in: text)
         if let textRange = textRange {
             let updatedText = text.replacingCharacters(in: textRange, with: string)
-            switch textField.accessibilityLabel {
-            case "name_text".localized():
+            
+            let textFieldType = TextFieldType(rawValue: textField.tag)
+            
+            switch textFieldType {
+            case .name:
                 viewModel.name = updatedText
-            case "surname_text".localized():
+            case .surname:
                 viewModel.surname = updatedText
-            case "company_text".localized():
+            case .company:
                 viewModel.company = updatedText
-            default: break
+            default:
+                print("nothing")
             }
-//            doneBarButton.isEnabled = viewModel.buttonState
+            doneButton.isEnabled = viewModel.buttonState
         }
         return true
     }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        nameTextField.placeholder = "name_text".localized()
-        surnameTextField.placeholder = "surname_text".localized()
-        companyTextField.placeholder = "company_text".localized()
-        return true
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
 }
+
+// MARK: UITableViewDataSource
+extension ContactsInfoFormViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.textFieldPlaceholderName.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: UserAttributeViewCell.identifier, for: indexPath) as? UserAttributeViewCell else {
+            return  UITableViewCell()
+        }
+        cell.selectionStyle = .none
+        cell.textField.tag = indexPath.row
+        cell.textField.delegate = self
+
+        let placeholderText = viewModel.textFieldPlaceholderName[indexPath.row]
+        cell.setPlaceholderText(placeholderText)
+        return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+extension ContactsInfoFormViewController: UITableViewDelegate {
+    
+}
+
+
 

@@ -27,7 +27,6 @@ class ContactsViewModel {
    ]
 
     func addContact(contact: Contact) {
-       
         let firstLetterIndex = contact.name.index(contact.name.startIndex, offsetBy: 1)
         let contactKey = String(contact.name[..<firstLetterIndex])
             

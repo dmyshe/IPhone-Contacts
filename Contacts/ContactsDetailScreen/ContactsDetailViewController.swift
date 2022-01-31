@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 
-
 protocol ContactsDetailViewControllerDelegate: AnyObject {
     func changeContact(oldContact: Contact, with newContact: Contact)
 }
@@ -10,22 +9,20 @@ class ContactsDetailViewController: UIViewController {
     
     var viewModel = ContactsDetailViewModel()
     weak var delegate: ContactsDetailViewControllerDelegate?
-    
-    var oldContact: Contact?
 
     //MARK: Views
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.circle.fill")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+        imageView.image = Constants.UI.Images.personIcon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     private lazy var editButton: UIBarButtonItem = {
-        let editButton = UIBarButtonItem(title: LocalizeStrings.ContactsViewController.edit,
+        let editButton = UIBarButtonItem(title: LocalizeStrings.ContactsDetailViewController.edit,
                                          style: .plain,
                                          target: self,
-                                         action: #selector(addTapped))
+                                         action: #selector(tapEditButton))
         return editButton
     }()
    
@@ -37,6 +34,7 @@ class ContactsDetailViewController: UIViewController {
     
     private func setupUserInterface() {
         view.backgroundColor = .systemBackground
+        
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = editButton
        
@@ -44,16 +42,15 @@ class ContactsDetailViewController: UIViewController {
     }
     
     private func makeConstraints() {
-
         NSLayoutConstraint.activate([
             contactImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             contactImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contactImage.heightAnchor.constraint(equalToConstant: 100),
-            contactImage.widthAnchor.constraint(equalToConstant: 100)
+            contactImage.heightAnchor.constraint(equalToConstant: Constants.UI.Layout.contactImageHeight),
+            contactImage.widthAnchor.constraint(equalToConstant: Constants.UI.Layout.contactImageHeight)
         ])
     }
     
-    @objc func addTapped() {
+    @objc func tapEditButton() {
         let controller = ContactsInfoFormViewController()
         navigationController?.present(controller, animated: true)
     }
@@ -62,6 +59,6 @@ class ContactsDetailViewController: UIViewController {
 // MARK: AddContactsViewControllerDelegate
 extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
     func addContact(_ contact: Contact) {
-        delegate?.changeContact(oldContact: oldContact! , with: contact)
+        delegate?.changeContact(oldContact: viewModel.oldContact! , with: contact)
     }
 }
