@@ -22,10 +22,6 @@ class UserAttributeViewCell : UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setPlaceholderText(_ text: String) {
-        textField.placeholder = text
-    }
-    
     private func makeConstraints() {
         contentView.addSubview(textField)
         NSLayoutConstraint.activate([
