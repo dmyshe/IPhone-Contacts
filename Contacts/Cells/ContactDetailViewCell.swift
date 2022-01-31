@@ -6,14 +6,14 @@ class ContactDetailViewCell : UITableViewCell {
     static let identifier = "ContactDetailViewCell"
     
     // MARK: Views
-    var titleLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var contactInfo: UIButton = {
+    private lazy var contactInfo: UIButton = {
         let button = UIButton()
         button.setTitleColor(.systemBlue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -40,6 +40,18 @@ class ContactDetailViewCell : UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    var setTextTitleLabel: String = "" {
+        didSet {
+            titleLabel.text = setTextTitleLabel
+        }
+    }
+    var setTextContactInfo: String = "" {
+        didSet {
+            contactInfo.setTitle(setTextContactInfo, for: .normal)
+        }
+    }
+
     
     private func setupUserInterface() {
         contentView.addSubview(cellContentStackView)

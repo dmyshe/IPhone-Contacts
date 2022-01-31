@@ -156,7 +156,7 @@ extension ContactsInfoFormViewController: UITableViewDataSource {
         cell.textField.delegate = self
 
         let placeholderText = viewModel.textFieldPlaceholderName[indexPath.row]
-        cell.textField.placeholder = placeholderText
+        cell.setTextFieldText = placeholderText
         return cell
     }
 }

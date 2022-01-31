@@ -20,7 +20,7 @@ class ContactsDetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Test"
+        label.text = viewModel.name
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -150,8 +150,8 @@ extension ContactsDetailViewController: UITableViewDataSource {
         }
         cell.selectionStyle = .none
 
-        cell.titleLabel.text = "Okay"
-        cell.contactInfo.setTitle("+3(80) 509338231", for: .normal)
+        cell.setTextTitleLabel = "mobile"
+        cell.setTextContactInfo = "+3 (80) 501235784"
         return cell
     }
 }
