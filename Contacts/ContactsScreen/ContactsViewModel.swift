@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 protocol ContactsViewModelDelegate: AnyObject {
     func reloadData()
@@ -36,6 +37,14 @@ class ContactsViewModel {
         } else {
             dictionary[contactKey] = [contact]
         }
+    }
+    
+    func countAllContacts(with tableView: UITableView) {
+        var allCounts = 0
+        for i in 0..<tableView.numberOfSections {
+            allCounts += tableView.numberOfRows(inSection: i)
+        }
+       allCountContacts = allCounts - 1
     }
     
     func setStartData() {
