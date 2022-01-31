@@ -112,12 +112,8 @@ extension ContactsViewController: UITableViewDataSource {
            let cell = tableView.dequeueReusableCell(withIdentifier: NumberOfContactsViewCell.identifier, for: indexPath) as? NumberOfContactsViewCell {
             cell.isUserInteractionEnabled = false
             
-            var allCounts = 0
-            for i in 0..<tableView.numberOfSections {
-                allCounts += tableView.numberOfRows(inSection: i)
-            }
-
-            viewModel.allCountContacts = allCounts - 1
+            viewModel.countAllContacts(with: tableView)
+            
             let countConctactsNumber = viewModel.allCountContacts
             cell.setText("\(countConctactsNumber) \(LocalizeStrings.ContactsViewController.contactsText)")
           
