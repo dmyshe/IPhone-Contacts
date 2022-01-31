@@ -116,7 +116,6 @@ extension ContactsViewController: UITableViewDataSource {
             
             let countConctactsNumber = viewModel.allCountContacts
             cell.setText("\(countConctactsNumber) \(LocalizeStrings.ContactsViewController.contactsText)")
-          
             return cell
         }
         
