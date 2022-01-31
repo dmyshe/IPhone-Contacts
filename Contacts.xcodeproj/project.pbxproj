@@ -25,6 +25,7 @@
 		32FA366F27A83CA200CB2320 /* UserAttributeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA366E27A83CA200CB2320 /* UserAttributeViewCell.swift */; };
 		32FA367427A86E7E00CB2320 /* TextFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA367327A86E7E00CB2320 /* TextFieldType.swift */; };
 		32FA367727A880AC00CB2320 /* UIButton + configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA367627A880AC00CB2320 /* UIButton + configuration.swift */; };
+		32FA367927A88E9900CB2320 /* ContactDetailViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FA367827A88E9900CB2320 /* ContactDetailViewCell.swift */; };
 		91533C8B278C9543009CA33A /* NumberOfContactsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91533C8A278C9543009CA33A /* NumberOfContactsViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,7 @@
 		32FA366E27A83CA200CB2320 /* UserAttributeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributeViewCell.swift; sourceTree = "<group>"; };
 		32FA367327A86E7E00CB2320 /* TextFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldType.swift; sourceTree = "<group>"; };
 		32FA367627A880AC00CB2320 /* UIButton + configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton + configuration.swift"; sourceTree = "<group>"; };
+		32FA367827A88E9900CB2320 /* ContactDetailViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactDetailViewCell.swift; sourceTree = "<group>"; };
 		91533C8A278C9543009CA33A /* NumberOfContactsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberOfContactsViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -196,6 +198,7 @@
 			children = (
 				91533C8A278C9543009CA33A /* NumberOfContactsViewCell.swift */,
 				32FA366E27A83CA200CB2320 /* UserAttributeViewCell.swift */,
+				32FA367827A88E9900CB2320 /* ContactDetailViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				322863AC27A1621400285609 /* Constants.swift in Sources */,
 				32E4AB5727A0257400489063 /* CustomButton.swift in Sources */,
 				32A7AA13278C52FA00D9EAF6 /* ContactsViewModel.swift in Sources */,
+				32FA367927A88E9900CB2320 /* ContactDetailViewCell.swift in Sources */,
 				322863AA27A15D0100285609 /* LocalizeString.swift in Sources */,
 				32A7A9FE278C36D300D9EAF6 /* AppDelegate.swift in Sources */,
 				32A7AA24278C7EF300D9EAF6 /* ContactsDetailViewModel.swift in Sources */,

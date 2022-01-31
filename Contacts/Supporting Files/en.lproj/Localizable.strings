@@ -10,5 +10,7 @@
 "addPhoto_text" = "Add photo";
 "edit_text" = "Edit";
 "conctacts_text" = "contacts";
-
+"message_text" = "message";
+"call_text" = "call";
+"mail_text" = "mail";
 

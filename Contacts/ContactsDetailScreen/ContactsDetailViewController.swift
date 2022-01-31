@@ -36,19 +36,22 @@ class ContactsDetailViewController: UIViewController {
     
     private lazy var messageButton: UIButton = {
         let button = UIButton()
-        button.configure(title: "message", systemImage: "message.fill")
+        button.configure(title: LocalizeStrings.ContactsDetailViewController.message,
+                         image: Constants.UI.Images.messageIcon)
         return button
     }()
     
     private lazy var callButton: UIButton = {
         let button = UIButton()
-        button.configure(title: "call", systemImage: "phone.fill")
+        button.configure(title:  LocalizeStrings.ContactsDetailViewController.call,
+                         image: Constants.UI.Images.callIcon)
         return button
     }()
     
     private lazy var mailButton: UIButton = {
         let button = UIButton()
-        button.configure(title: "mail", systemImage: "envelope.fill")
+        button.configure(title:  LocalizeStrings.ContactsDetailViewController.mail,
+                         image: Constants.UI.Images.mailIcon)
         return button
     }()
     
@@ -75,6 +78,16 @@ class ContactsDetailViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ContactDetailViewCell.self,
+                           forCellReuseIdentifier: ContactDetailViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,13 +96,14 @@ class ContactsDetailViewController: UIViewController {
     }
     
     private func setupUserInterface() {
-        view.backgroundColor = .systemBackground
-        
+        view.backgroundColor = .systemGray6
+
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = editButton
        
         view.addSubview(titleBlockStackView)
         view.addSubview(actionButtonStackView)
+        view.addSubview(tableView)
     }
     
     private func makeConstraints() {
@@ -102,11 +116,12 @@ class ContactsDetailViewController: UIViewController {
             
             actionButtonStackView.topAnchor.constraint(equalTo: titleBlockStackView.bottomAnchor, constant: Constants.UI.Layout.defaultPadding),
             actionButtonStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.UI.Layout.defaultPadding),
-            actionButtonStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.UI.Layout.defaultPadding)
+            actionButtonStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.UI.Layout.defaultPadding),
             
-            
-            
-            
+            tableView.topAnchor.constraint(equalTo: actionButtonStackView.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -122,3 +137,27 @@ extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
         delegate?.changeContact(oldContact: viewModel.oldContact! , with: contact)
     }
 }
+
+
+// MARK: UITableViewDataSource
+extension ContactsDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailViewCell.identifier, for: indexPath) as? ContactDetailViewCell else {
+            return  UITableViewCell()
+        }
+        cell.selectionStyle = .none
+
+        cell.titleLabel.text = "Okay"
+        cell.contactInfo.setTitle("+3(80) 509338231", for: .normal)
+        return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+extension ContactsDetailViewController: UITableViewDelegate {
+    
+}
+

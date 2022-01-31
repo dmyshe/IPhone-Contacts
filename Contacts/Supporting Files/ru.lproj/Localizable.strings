@@ -10,3 +10,6 @@
 "addPhoto_text" = "Добавить фото";
 "edit_text" = "Изменить";
 "conctacts_text" = "контактов";
+"message_text" = "сообщение";
+"call_text" = "подзвонить";
+"mail_text" = "почта";
