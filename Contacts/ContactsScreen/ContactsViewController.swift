@@ -141,7 +141,7 @@ extension ContactsViewController: UITableViewDelegate {
             
             let controller = ContactsDetailViewController()
             controller.delegate = self
-            controller.title = selectedName
+            controller.viewModel.name = selectedName
             navigationController?.pushViewController(controller, animated: true)
         }
     }

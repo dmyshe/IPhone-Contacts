@@ -20,7 +20,7 @@ class ContactsDetailViewController: UIViewController {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Test"
+        label.text = viewModel.name
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
