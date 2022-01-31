@@ -20,5 +20,8 @@ enum LocalizeStrings {
     }
     enum ContactsDetailViewController {
         static let edit = "edit_text".localized()
+        static let message = "message_text".localized()
+        static let call = "call_text".localized()
+        static let mail = "mail_text".localized()
     }
 }

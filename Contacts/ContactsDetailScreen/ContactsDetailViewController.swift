@@ -18,12 +18,75 @@ class ContactsDetailViewController: UIViewController {
         return imageView
     }()
     
+    private lazy var titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Test"
+        label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private lazy var editButton: UIBarButtonItem = {
         let editButton = UIBarButtonItem(title: LocalizeStrings.ContactsDetailViewController.edit,
                                          style: .plain,
                                          target: self,
                                          action: #selector(tapEditButton))
         return editButton
+    }()
+    
+    private lazy var messageButton: UIButton = {
+        let button = UIButton()
+        button.configure(title: LocalizeStrings.ContactsDetailViewController.message,
+                         image: Constants.UI.Images.messageIcon)
+        return button
+    }()
+    
+    private lazy var callButton: UIButton = {
+        let button = UIButton()
+        button.configure(title:  LocalizeStrings.ContactsDetailViewController.call,
+                         image: Constants.UI.Images.callIcon)
+        return button
+    }()
+    
+    private lazy var mailButton: UIButton = {
+        let button = UIButton()
+        button.configure(title:  LocalizeStrings.ContactsDetailViewController.mail,
+                         image: Constants.UI.Images.mailIcon)
+        return button
+    }()
+    
+    private lazy var titleBlockStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [contactImage,
+                                                      titleLabel])
+        stackView.axis = .vertical
+        stackView.spacing = 4
+        stackView.distribution = .equalCentering
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    
+    private lazy var actionButtonStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [ messageButton,
+                                                        callButton,
+                                                        mailButton ])
+        stackView.axis = .horizontal
+        stackView.spacing = 4
+        stackView.distribution = .fillEqually
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        return stackView
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .insetGrouped)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ContactDetailViewCell.self,
+                           forCellReuseIdentifier: ContactDetailViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
    
     override func viewDidLoad() {
@@ -33,20 +96,32 @@ class ContactsDetailViewController: UIViewController {
     }
     
     private func setupUserInterface() {
-        view.backgroundColor = .systemBackground
-        
+        view.backgroundColor = .systemGray6
+
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = editButton
        
-        view.addSubview(contactImage)
+        view.addSubview(titleBlockStackView)
+        view.addSubview(actionButtonStackView)
+        view.addSubview(tableView)
     }
     
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            contactImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            contactImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleBlockStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            titleBlockStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
             contactImage.heightAnchor.constraint(equalToConstant: Constants.UI.Layout.contactImageHeight),
-            contactImage.widthAnchor.constraint(equalToConstant: Constants.UI.Layout.contactImageHeight)
+            contactImage.widthAnchor.constraint(equalToConstant: Constants.UI.Layout.contactImageHeight),
+            
+            actionButtonStackView.topAnchor.constraint(equalTo: titleBlockStackView.bottomAnchor, constant: Constants.UI.Layout.defaultPadding),
+            actionButtonStackView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: Constants.UI.Layout.defaultPadding),
+            actionButtonStackView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -Constants.UI.Layout.defaultPadding),
+            
+            tableView.topAnchor.constraint(equalTo: actionButtonStackView.bottomAnchor),
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
@@ -62,3 +137,27 @@ extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
         delegate?.changeContact(oldContact: viewModel.oldContact! , with: contact)
     }
 }
+
+
+// MARK: UITableViewDataSource
+extension ContactsDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        1
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ContactDetailViewCell.identifier, for: indexPath) as? ContactDetailViewCell else {
+            return  UITableViewCell()
+        }
+        cell.selectionStyle = .none
+
+        cell.titleLabel.text = "Okay"
+        cell.contactInfo.setTitle("+3(80) 509338231", for: .normal)
+        return cell
+    }
+}
+
+// MARK: UITableViewDelegate
+extension ContactsDetailViewController: UITableViewDelegate {
+    
+}
+

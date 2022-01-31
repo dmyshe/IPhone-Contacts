@@ -6,6 +6,10 @@ struct Constants {
     struct UI {
         struct Images {
             static let personIcon = UIImage(systemName: "person.crop.circle.fill")!.withTintColor(.gray, renderingMode: .alwaysOriginal)
+            static let messageIcon = UIImage(systemName: "message.fill")!
+            static let callIcon = UIImage(systemName: "phone.fill")!
+            static let mailIcon = UIImage(systemName: "envelope.fill")!
+
         }
         
         struct Layout {
