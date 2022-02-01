@@ -144,7 +144,7 @@ extension ContactsViewController: UITableViewDelegate {
             controller.viewModel.name = selectedName
             
             let phoneNumber = names[indexPath.row].phoneNumber?.first ?? 0
-            controller.viewModel.number = String("+\(phoneNumber )")
+            controller.viewModel.phoneNumber = String("+\(phoneNumber )")
             
             navigationController?.pushViewController(controller, animated: true)
         }
