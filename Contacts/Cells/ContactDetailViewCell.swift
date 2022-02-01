@@ -24,7 +24,7 @@ class ContactDetailViewCell : UITableViewCell {
         let stack = UIStackView(arrangedSubviews: [titleLabel,
                                                    contactInfo])
         stack.axis = .vertical
-        stack.spacing = 4
+        stack.spacing = Constants.UI.Layout.contentSpacing
         stack.distribution = .equalCentering
         stack.alignment = .leading
         stack.translatesAutoresizingMaskIntoConstraints = false

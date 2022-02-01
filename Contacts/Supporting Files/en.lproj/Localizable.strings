@@ -13,4 +13,5 @@
 "message_text" = "message";
 "call_text" = "call";
 "mail_text" = "mail";
+"mobile_text" = "mobile";
 

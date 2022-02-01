@@ -47,7 +47,7 @@ class ContactsInfoFormViewController: UIViewController {
         let stack = UIStackView(arrangedSubviews: [contactImage,
                                                    addImageButton])
         stack.axis = .vertical
-        stack.spacing = 5
+        stack.spacing = Constants.UI.Layout.contentSpacing
         stack.distribution = .equalCentering
         stack.alignment = .center
         stack.translatesAutoresizingMaskIntoConstraints = false

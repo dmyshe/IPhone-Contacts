@@ -18,13 +18,13 @@ class ContactsViewModel {
     var allCountContacts: Int = 0
     
     var exampleContactsArray: [Contact] = [
-           Contact(name: "Аня", surName: "Приходько"),
-           Contact(name: "Алена", surName: "Коробова"),
-           Contact(name: "Алексей", surName: "Воеводин"),
-           Contact(name: "Диана", surName: "Принцесса"),
-           Contact(name: "Дима", surName: "Друг"),
-           Contact(name: "Иван", surName: "Умный"),
-           Contact(name: "Ира", surName: "Скавчук")
+           Contact(name: "Аня", surName: "Приходько", phoneNumber: [38044833321]),
+           Contact(name: "Алена", surName: "Коробова", phoneNumber: [38050933234]),
+           Contact(name: "Алексей", surName: "Воеводин", phoneNumber: [380509344234]),
+           Contact(name: "Диана", surName: "Принцесса", phoneNumber: [38040933321]),
+           Contact(name: "Дима", surName: "Друг", phoneNumber: [38044833321]),
+           Contact(name: "Иван", surName: "Умный", phoneNumber: [38044833321]),
+           Contact(name: "Ира", surName: "Скавчук", phoneNumber: [380448323321])
    ]
 
     func addContact(contact: Contact) {

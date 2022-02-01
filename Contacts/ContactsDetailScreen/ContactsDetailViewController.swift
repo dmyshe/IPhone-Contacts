@@ -59,7 +59,7 @@ class ContactsDetailViewController: UIViewController {
         let stackView = UIStackView(arrangedSubviews: [contactImage,
                                                       titleLabel])
         stackView.axis = .vertical
-        stackView.spacing = 4
+        stackView.spacing = Constants.UI.Layout.contentSpacing
         stackView.distribution = .equalCentering
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -72,7 +72,7 @@ class ContactsDetailViewController: UIViewController {
                                                         callButton,
                                                         mailButton ])
         stackView.axis = .horizontal
-        stackView.spacing = 4
+        stackView.spacing = Constants.UI.Layout.contentSpacing
         stackView.distribution = .fillEqually
         stackView.alignment = .center
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -150,8 +150,8 @@ extension ContactsDetailViewController: UITableViewDataSource {
         }
         cell.selectionStyle = .none
 
-        cell.setTextTitleLabel = "mobile"
-        cell.setTextContactInfo = "+3 (80) 501235784"
+        cell.setTextTitleLabel = LocalizeStrings.ContactsDetailViewController.mobile
+        cell.setTextContactInfo = viewModel.number ?? ""
         return cell
     }
 }

@@ -14,13 +14,13 @@ class NumberOfContactsViewCell: UITableViewCell {
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .default, reuseIdentifier: "numberOfContacts")
+        super.init(style: .default, reuseIdentifier: NumberOfContactsViewCell.identifier)
         
         contentView.addSubview(label)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+            label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.UI.Layout.defaultPadding),
+            label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.UI.Layout.defaultPadding)
         ])
     }
     
