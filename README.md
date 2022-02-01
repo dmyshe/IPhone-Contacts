@@ -7,6 +7,8 @@
  - - - -
 ### Screenshots ###
 
-<img src="https://user-images.githubusercontent.com/94231197/151199164-8254bda7-df3d-46a9-9b14-4d058aa51729.png" width="600" height="460">
+<img src="https://user-images.githubusercontent.com/94231197/151895962-c55e4f18-500b-41ac-a5ad-f81f8ac6de7f.png" width="600" height="460">
 
 - - - -
+### TODO ###
+Add CoreData
