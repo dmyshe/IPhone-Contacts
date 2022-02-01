@@ -22,6 +22,7 @@ class ContactsDetailViewController: UIViewController {
         let label = UILabel()
         label.text = viewModel.name
         label.textColor = .black
+        label.font = .boldSystemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
