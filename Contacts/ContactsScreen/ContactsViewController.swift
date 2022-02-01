@@ -5,16 +5,6 @@ class ContactsViewController: UIViewController {
     var viewModel = ContactsViewModel()
     
     //MARK: Views
-    private lazy var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        tableView.register(NumberOfContactsViewCell.self, forCellReuseIdentifier: NumberOfContactsViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        return tableView
-    }()
-    
     private lazy var searсhController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
@@ -23,10 +13,20 @@ class ContactsViewController: UIViewController {
     }()
     
     private lazy var addButton: UIBarButtonItem = {
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add,
+        let button = UIBarButtonItem(barButtonSystemItem: .add,
                                         target: self,
                                         action: #selector(tapAddButton))
-        return addButton
+        return button
+    }()
+    
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(NumberOfContactsViewCell.self, forCellReuseIdentifier: NumberOfContactsViewCell.identifier)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
     }()
 
     override func viewDidLoad() {
