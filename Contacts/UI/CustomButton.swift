@@ -20,7 +20,6 @@ class CustomButton: UIView {
         return image
     }()
     
-    
     private func setupUserInterface() {
         addSubview(button)
         addSubview(imageView)
@@ -35,11 +34,11 @@ class CustomButton: UIView {
             button.heightAnchor.constraint(equalTo: self.heightAnchor),
 
             
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
+            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.UI.Layout.defaultOffset),
             imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         
 
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.UI.Layout.defaultOffset),
             titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
         ])
     }
@@ -51,6 +50,3 @@ class CustomButton: UIView {
     }
     
 }
-
-
-//BASE CLASS 
