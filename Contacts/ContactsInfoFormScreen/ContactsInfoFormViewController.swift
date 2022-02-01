@@ -26,7 +26,6 @@ class ContactsInfoFormViewController: UIViewController {
         return button
     }()
     
-    
     private lazy var cancelButton: UIBarButtonItem = {
         let button = UIBarButtonItem(title: LocalizeStrings.ContactsInfoFormViewController.cancel,
                                      style: .plain,
@@ -110,7 +109,6 @@ class ContactsInfoFormViewController: UIViewController {
 }
 
 // MARK: - UITextFieldDelegate
-
 extension ContactsInfoFormViewController: UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -52,13 +52,11 @@ class ContactDetailViewCell : UITableViewCell {
         }
     }
 
-    
     private func setupUserInterface() {
         contentView.addSubview(cellContentStackView)
     }
     
     private func makeConstraints() {
-        
         NSLayoutConstraint.activate([
             cellContentStackView.topAnchor.constraint(equalTo: contentView.topAnchor , constant: Constants.UI.Layout.defaultOffset),
             cellContentStackView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: Constants.UI.Layout.defaultOffset),

@@ -56,6 +56,7 @@ class ContactsDetailViewController: UIViewController {
         return button
     }()
     
+    
     private lazy var titleBlockStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [contactImage,
                                                       titleLabel])
@@ -152,7 +153,7 @@ extension ContactsDetailViewController: UITableViewDataSource {
         cell.selectionStyle = .none
 
         cell.setTextTitleLabel = LocalizeStrings.ContactsDetailViewController.mobile
-        cell.setTextContactInfo = viewModel.number ?? ""
+        cell.setTextContactInfo = viewModel.phoneNumber ?? ""
         return cell
     }
 }
