@@ -11,7 +11,7 @@ struct Contact {
         return "\(name) \(surName)"
     }
     
-    var phoneNumber: [String]?
+    var phoneNumber: [Int]?
     var email: [String]?
     
     var melody: String?

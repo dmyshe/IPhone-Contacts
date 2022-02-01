@@ -1,6 +1,7 @@
 import Foundation
 
 enum LocalizeStrings {
+    
     enum ContactsViewController {
         static let contactsTitle = "conctacts_title".localized()
         static let search = "search_text".localized()
@@ -18,10 +19,12 @@ enum LocalizeStrings {
         static let company = "company_text".localized()
         static let addPhoto = "addPhoto_text".localized()
     }
+    
     enum ContactsDetailViewController {
         static let edit = "edit_text".localized()
         static let message = "message_text".localized()
         static let call = "call_text".localized()
         static let mail = "mail_text".localized()
+        static let mobile = "mobile_text".localized()
     }
 }

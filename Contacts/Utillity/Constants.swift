@@ -18,7 +18,8 @@ struct Constants {
             
             static let contactImageHeight : CGFloat = 100
             static let textFieldHeight : CGFloat = 44
-
+            
+            static let contentSpacing: CGFloat = 4
         }
     }
     
