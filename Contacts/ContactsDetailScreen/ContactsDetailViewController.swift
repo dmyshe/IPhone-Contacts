@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol ContactsDetailViewControllerDelegate: AnyObject {
-    func changeContact(oldContact: Contact, with newContact: Contact)
+    func changeContact( _ oldContact: Contact, with newContact: Contact)
 }
 
 class ContactsDetailViewController: UIViewController {
@@ -36,22 +36,19 @@ class ContactsDetailViewController: UIViewController {
     }()
     
     private lazy var messageButton: UIButton = {
-        let button = UIButton()
-        button.configure(title: LocalizeStrings.ContactsDetailViewController.message,
-                         image: Constants.UI.Images.messageIcon)
+        let button = CustomButton(title: LocalizeStrings.ContactsDetailViewController.message,
+                                  image: Constants.UI.Images.messageIcon)
         return button
     }()
     
     private lazy var callButton: UIButton = {
-        let button = UIButton()
-        button.configure(title:  LocalizeStrings.ContactsDetailViewController.call,
+        let button = CustomButton(title:  LocalizeStrings.ContactsDetailViewController.call,
                          image: Constants.UI.Images.callIcon)
         return button
     }()
     
     private lazy var mailButton: UIButton = {
-        let button = UIButton()
-        button.configure(title:  LocalizeStrings.ContactsDetailViewController.mail,
+        let button = CustomButton(title:  LocalizeStrings.ContactsDetailViewController.mail,
                          image: Constants.UI.Images.mailIcon)
         return button
     }()
@@ -136,7 +133,7 @@ class ContactsDetailViewController: UIViewController {
 // MARK: AddContactsViewControllerDelegate
 extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
     func addContact(_ contact: Contact) {
-        delegate?.changeContact(oldContact: viewModel.oldContact! , with: contact)
+        delegate?.changeContact( viewModel.oldContact! , with: contact)
     }
 }
 

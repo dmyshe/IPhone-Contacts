@@ -1,7 +1,6 @@
-import UIKit
 
 class ContactsInfoFormViewModel {
-    var image: UIImage?
+    var image: String?
     
     var name = ""
     var surname = ""
@@ -11,7 +10,7 @@ class ContactsInfoFormViewModel {
         return !name.isEmpty || !surname.isEmpty || !company.isEmpty
     }
     
-    let textFieldPlaceholderName = [
+    let textfieldPlaceholderText = [
         LocalizeStrings.ContactsInfoFormViewController.name,
         LocalizeStrings.ContactsInfoFormViewController.surname,
         LocalizeStrings.ContactsInfoFormViewController.company

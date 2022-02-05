@@ -143,7 +143,7 @@ extension ContactsInfoFormViewController: UITextFieldDelegate {
 // MARK: UITableViewDataSource
 extension ContactsInfoFormViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.textFieldPlaceholderName.count
+        viewModel.textfieldPlaceholderText.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UserAttributeViewCell.identifier, for: indexPath) as? UserAttributeViewCell else {
@@ -153,7 +153,7 @@ extension ContactsInfoFormViewController: UITableViewDataSource {
         cell.textField.tag = indexPath.row
         cell.textField.delegate = self
 
-        let placeholderText = viewModel.textFieldPlaceholderName[indexPath.row]
+        let placeholderText = viewModel.textfieldPlaceholderText[indexPath.row]
         cell.setTextFieldText = placeholderText
         return cell
     }
