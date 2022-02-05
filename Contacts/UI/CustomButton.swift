@@ -1,52 +1,27 @@
 import Foundation
 import UIKit
 
-class CustomButton: UIView {
+class CustomButton: UIButton {
     
-    private lazy var titleLabel: UILabel = {
-        let label = UILabel()
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
-    private lazy var button: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    private lazy var imageView: UIImageView = {
-        let image = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    private func setupUserInterface() {
-        addSubview(button)
-        addSubview(imageView)
-        addSubview(titleLabel)
+    init(title: String, image: UIImage) {
+        super.init(frame: .zero)
+        configure(title: title, image: image)
     }
-
-    private func makeConstraints() {
-        setupUserInterface()
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    func configure(title: String, image: UIImage) {
+        var config = UIButton.Configuration.plain()
+        config.subtitle = title
+        config.image = image
+        config.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 10, bottom: 8, trailing: 10)
+        config.imagePlacement = .top
+        config.imagePadding = Constants.UI.Layout.contentSpacing
+        config.background.strokeWidth = 1.0
+        config.background.backgroundColor = .systemBackground
+        config.cornerStyle = .large
         
-        NSLayoutConstraint.activate([
-            button.widthAnchor.constraint(equalTo: self.widthAnchor),
-            button.heightAnchor.constraint(equalTo: self.heightAnchor),
-
-            
-            imageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.UI.Layout.defaultOffset),
-            imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        
-
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: Constants.UI.Layout.defaultOffset),
-            titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor)
-        ])
+        self.configuration = config
     }
-    
-      func configuration(text: String,systemImageName: String) {
-        titleLabel.text = text
-        button.setTitle(text, for: .normal)
-        imageView.image = UIImage(systemName: systemImageName)
-    }
-    
 }

@@ -36,22 +36,19 @@ class ContactsDetailViewController: UIViewController {
     }()
     
     private lazy var messageButton: UIButton = {
-        let button = UIButton()
-        button.configure(title: LocalizeStrings.ContactsDetailViewController.message,
-                         image: Constants.UI.Images.messageIcon)
+        let button = CustomButton(title: LocalizeStrings.ContactsDetailViewController.message,
+                                  image: Constants.UI.Images.messageIcon)
         return button
     }()
     
     private lazy var callButton: UIButton = {
-        let button = UIButton()
-        button.configure(title:  LocalizeStrings.ContactsDetailViewController.call,
+        let button = CustomButton(title:  LocalizeStrings.ContactsDetailViewController.call,
                          image: Constants.UI.Images.callIcon)
         return button
     }()
     
     private lazy var mailButton: UIButton = {
-        let button = UIButton()
-        button.configure(title:  LocalizeStrings.ContactsDetailViewController.mail,
+        let button = CustomButton(title:  LocalizeStrings.ContactsDetailViewController.mail,
                          image: Constants.UI.Images.mailIcon)
         return button
     }()
