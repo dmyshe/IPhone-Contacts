@@ -161,7 +161,8 @@ extension ContactsViewController: UISearchResultsUpdating {
 
 // MARK: - ContactsDetailViewControllerDelegate
 extension ContactsViewController: ContactsDetailViewControllerDelegate {
-    func changeContact(oldContact: Contact, with newContact: Contact) {
+    func changeContact(_ oldContact: Contact, with newContact: Contact) {
+        
     }
 
 }

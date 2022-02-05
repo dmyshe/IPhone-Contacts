@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 protocol ContactsDetailViewControllerDelegate: AnyObject {
-    func changeContact(oldContact: Contact, with newContact: Contact)
+    func changeContact( _ oldContact: Contact, with newContact: Contact)
 }
 
 class ContactsDetailViewController: UIViewController {
@@ -136,7 +136,7 @@ class ContactsDetailViewController: UIViewController {
 // MARK: AddContactsViewControllerDelegate
 extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
     func addContact(_ contact: Contact) {
-        delegate?.changeContact(oldContact: viewModel.oldContact! , with: contact)
+        delegate?.changeContact( viewModel.oldContact! , with: contact)
     }
 }
 
