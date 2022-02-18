@@ -14,7 +14,6 @@ class ContactsDetailViewController: UIViewController {
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constants.UI.Images.personIcon
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -23,7 +22,6 @@ class ContactsDetailViewController: UIViewController {
         label.text = viewModel.name
         label.textColor = .black
         label.font = .boldSystemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -61,7 +59,6 @@ class ContactsDetailViewController: UIViewController {
         stackView.spacing = Constants.UI.Layout.contentSpacing
         stackView.distribution = .equalCentering
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -74,7 +71,6 @@ class ContactsDetailViewController: UIViewController {
         stackView.spacing = Constants.UI.Layout.contentSpacing
         stackView.distribution = .fillEqually
         stackView.alignment = .center
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -84,7 +80,6 @@ class ContactsDetailViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(ContactDetailViewCell.self,
                            forCellReuseIdentifier: ContactDetailViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
    
@@ -100,9 +95,9 @@ class ContactsDetailViewController: UIViewController {
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = editButton
        
-        view.addSubview(titleBlockStackView)
-        view.addSubview(actionButtonStackView)
-        view.addSubview(tableView)
+        view.addSubviewForAutoLayout(titleBlockStackView)
+        view.addSubviewForAutoLayout(actionButtonStackView)
+        view.addSubviewForAutoLayout(tableView)
     }
     
     private func makeConstraints() {

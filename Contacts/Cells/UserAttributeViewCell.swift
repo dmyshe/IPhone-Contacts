@@ -9,7 +9,6 @@ class UserAttributeViewCell : UITableViewCell {
     var textField: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
-        textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
 
@@ -29,7 +28,7 @@ class UserAttributeViewCell : UITableViewCell {
     }
     
     private func makeConstraints() {
-        contentView.addSubview(textField)
+        contentView.addSubviewForAutoLayout(textField)
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.UI.Layout.defaultOffset),
             textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Constants.UI.Layout.defaultOffset),

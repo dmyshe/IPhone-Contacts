@@ -9,14 +9,12 @@ class ContactDetailViewCell : UITableViewCell {
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var contactInfo: UIButton = {
         let button = UIButton()
         button.setTitleColor(.systemBlue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -27,7 +25,6 @@ class ContactDetailViewCell : UITableViewCell {
         stack.spacing = Constants.UI.Layout.contentSpacing
         stack.distribution = .equalCentering
         stack.alignment = .leading
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -53,7 +50,7 @@ class ContactDetailViewCell : UITableViewCell {
     }
 
     private func setupUserInterface() {
-        contentView.addSubview(cellContentStackView)
+        contentView.addSubviewForAutoLayout(cellContentStackView)
     }
     
     private func makeConstraints() {

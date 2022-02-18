@@ -10,6 +10,7 @@
 		32210584279DDDEB00DD71D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32210586279DDDEB00DD71D2 /* Localizable.strings */; };
 		322863AA27A15D0100285609 /* LocalizeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322863A927A15D0100285609 /* LocalizeString.swift */; };
 		322863AC27A1621400285609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322863AB27A1621400285609 /* Constants.swift */; };
+		32287DF727C01ABB001A4079 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32287DF627C01ABB001A4079 /* Extensions.swift */; };
 		326028A8279C9502002A0163 /* ContactsInfoFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326028A7279C9502002A0163 /* ContactsInfoFormViewModel.swift */; };
 		32A7A9FE278C36D300D9EAF6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A7A9FD278C36D300D9EAF6 /* AppDelegate.swift */; };
 		32A7AA02278C36D300D9EAF6 /* ContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32A7AA01278C36D300D9EAF6 /* ContactsViewController.swift */; };
@@ -34,6 +35,7 @@
 		32210587279DDDEE00DD71D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		322863A927A15D0100285609 /* LocalizeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeString.swift; sourceTree = "<group>"; };
 		322863AB27A1621400285609 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		32287DF627C01ABB001A4079 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		326028A7279C9502002A0163 /* ContactsInfoFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsInfoFormViewModel.swift; sourceTree = "<group>"; };
 		32A7A9FA278C36D300D9EAF6 /* Contacts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Contacts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32A7A9FD278C36D300D9EAF6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				322863A927A15D0100285609 /* LocalizeString.swift */,
 				322863AB27A1621400285609 /* Constants.swift */,
 				32FA367327A86E7E00CB2320 /* TextFieldType.swift */,
+				32287DF627C01ABB001A4079 /* Extensions.swift */,
 			);
 			path = Utillity;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				32A7AA13278C52FA00D9EAF6 /* ContactsViewModel.swift in Sources */,
 				32FA367927A88E9900CB2320 /* ContactDetailViewCell.swift in Sources */,
 				322863AA27A15D0100285609 /* LocalizeString.swift in Sources */,
+				32287DF727C01ABB001A4079 /* Extensions.swift in Sources */,
 				32A7A9FE278C36D300D9EAF6 /* AppDelegate.swift in Sources */,
 				32A7AA24278C7EF300D9EAF6 /* ContactsDetailViewModel.swift in Sources */,
 			);

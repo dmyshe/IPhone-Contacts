@@ -14,7 +14,6 @@ class ContactsInfoFormViewController: UIViewController {
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constants.UI.Images.personIcon
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -22,7 +21,6 @@ class ContactsInfoFormViewController: UIViewController {
         let button = UIButton()
         button.setTitle(LocalizeStrings.ContactsInfoFormViewController.addPhoto, for: .normal)
         button.setTitleColor(.systemBlue, for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -49,7 +47,6 @@ class ContactsInfoFormViewController: UIViewController {
         stack.spacing = Constants.UI.Layout.contentSpacing
         stack.distribution = .equalCentering
         stack.alignment = .center
-        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
     
@@ -59,7 +56,6 @@ class ContactsInfoFormViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UserAttributeViewCell.self,
                            forCellReuseIdentifier: UserAttributeViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
@@ -88,8 +84,8 @@ class ContactsInfoFormViewController: UIViewController {
         navigationItem.leftBarButtonItem = cancelButton
         navigationItem.rightBarButtonItem = doneButton
         
-        view.addSubview(photoStackView)
-        view.addSubview(tableView)
+        view.addSubviewForAutoLayout(photoStackView)
+        view.addSubviewForAutoLayout(tableView)
     }
     
     private func makeConstraints() {
