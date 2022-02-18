@@ -9,14 +9,13 @@ class NumberOfContactsViewCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title3)
         label.textColor = .lightGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: NumberOfContactsViewCell.identifier)
         
-        contentView.addSubview(label)
+        contentView.addSubviewForAutoLayout(label)
         NSLayoutConstraint.activate([
             label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             label.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Constants.UI.Layout.defaultPadding),

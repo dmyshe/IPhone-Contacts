@@ -25,7 +25,6 @@ class ContactsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.register(NumberOfContactsViewCell.self, forCellReuseIdentifier: NumberOfContactsViewCell.identifier)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
 
@@ -55,7 +54,7 @@ class ContactsViewController: UIViewController {
         navigationItem.rightBarButtonItem = addButton
         navigationItem.searchController = searсhController
 
-        view.addSubview(tableView)
+        view.addSubviewForAutoLayout(tableView)
     }
     
     private func makeConstraints() {
