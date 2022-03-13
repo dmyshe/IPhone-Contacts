@@ -4,7 +4,7 @@ class ContactsViewController: UIViewController {
     
     var viewModel = ContactsViewModel()
     
-    //MARK: Views
+    //MARK: -  Views
     private lazy var searсhController: UISearchController = {
         let searchController = UISearchController()
         searchController.searchResultsUpdater = self
