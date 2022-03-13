@@ -4,7 +4,7 @@ class NumberOfContactsViewCell: UITableViewCell {
     
     static let identifier = "NumberOfContactsViewCell"
     
-    // MARK: Views
+    // MARK: - Views
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = UIFont.preferredFont(forTextStyle: .title3)

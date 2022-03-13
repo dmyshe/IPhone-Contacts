@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		32210584279DDDEB00DD71D2 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32210586279DDDEB00DD71D2 /* Localizable.strings */; };
-		322863AA27A15D0100285609 /* LocalizeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322863A927A15D0100285609 /* LocalizeString.swift */; };
+		322863AA27A15D0100285609 /* LocalizeStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322863A927A15D0100285609 /* LocalizeStrings.swift */; };
 		322863AC27A1621400285609 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 322863AB27A1621400285609 /* Constants.swift */; };
 		32287DF727C01ABB001A4079 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32287DF627C01ABB001A4079 /* Extensions.swift */; };
 		326028A8279C9502002A0163 /* ContactsInfoFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 326028A7279C9502002A0163 /* ContactsInfoFormViewModel.swift */; };
@@ -33,7 +33,7 @@
 		3221057A279DDC2E00DD71D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		32210585279DDDEB00DD71D2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		32210587279DDDEE00DD71D2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		322863A927A15D0100285609 /* LocalizeString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeString.swift; sourceTree = "<group>"; };
+		322863A927A15D0100285609 /* LocalizeStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizeStrings.swift; sourceTree = "<group>"; };
 		322863AB27A1621400285609 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		32287DF627C01ABB001A4079 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		326028A7279C9502002A0163 /* ContactsInfoFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsInfoFormViewModel.swift; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				32E4AB4A27A01E7E00489063 /* String + localized.swift */,
-				322863A927A15D0100285609 /* LocalizeString.swift */,
+				322863A927A15D0100285609 /* LocalizeStrings.swift */,
 				322863AB27A1621400285609 /* Constants.swift */,
 				32FA367327A86E7E00CB2320 /* TextFieldType.swift */,
 				32287DF627C01ABB001A4079 /* Extensions.swift */,
@@ -280,7 +280,7 @@
 				322863AC27A1621400285609 /* Constants.swift in Sources */,
 				32A7AA13278C52FA00D9EAF6 /* ContactsViewModel.swift in Sources */,
 				32FA367927A88E9900CB2320 /* ContactDetailViewCell.swift in Sources */,
-				322863AA27A15D0100285609 /* LocalizeString.swift in Sources */,
+				322863AA27A15D0100285609 /* LocalizeStrings.swift in Sources */,
 				32287DF727C01ABB001A4079 /* Extensions.swift in Sources */,
 				32A7A9FE278C36D300D9EAF6 /* AppDelegate.swift in Sources */,
 				32A7AA24278C7EF300D9EAF6 /* ContactsDetailViewModel.swift in Sources */,

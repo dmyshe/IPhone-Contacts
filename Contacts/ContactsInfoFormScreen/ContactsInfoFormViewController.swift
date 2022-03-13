@@ -10,7 +10,7 @@ class ContactsInfoFormViewController: UIViewController {
     let viewModel = ContactsInfoFormViewModel()
     weak var delegate: ContactsInfoFormViewControllerDelegate?
     
-    //MARK: Views
+    //MARK: - Views
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constants.UI.Images.personIcon
@@ -136,7 +136,7 @@ extension ContactsInfoFormViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension ContactsInfoFormViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.textfieldPlaceholderText.count
@@ -155,7 +155,7 @@ extension ContactsInfoFormViewController: UITableViewDataSource {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension ContactsInfoFormViewController: UITableViewDelegate {
     
 }

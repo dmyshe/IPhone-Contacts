@@ -10,7 +10,7 @@ class ContactsDetailViewController: UIViewController {
     var viewModel = ContactsDetailViewModel()
     weak var delegate: ContactsDetailViewControllerDelegate?
 
-    //MARK: Views
+    //MARK: - Views
     private lazy var contactImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = Constants.UI.Images.personIcon
@@ -125,7 +125,7 @@ class ContactsDetailViewController: UIViewController {
     }
 }
 
-// MARK: AddContactsViewControllerDelegate
+// MARK: - AddContactsViewControllerDelegate
 extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
     func addContact(_ contact: Contact) {
         delegate?.changeContact( viewModel.oldContact! , with: contact)
@@ -133,7 +133,7 @@ extension ContactsDetailViewController: ContactsInfoFormViewControllerDelegate {
 }
 
 
-// MARK: UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension ContactsDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         1
@@ -150,7 +150,7 @@ extension ContactsDetailViewController: UITableViewDataSource {
     }
 }
 
-// MARK: UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension ContactsDetailViewController: UITableViewDelegate {
     
 }

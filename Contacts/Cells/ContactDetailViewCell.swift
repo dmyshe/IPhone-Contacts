@@ -5,7 +5,7 @@ class ContactDetailViewCell : UITableViewCell {
     
     static let identifier = "ContactDetailViewCell"
     
-    // MARK: Views
+    // MARK: - Views
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black

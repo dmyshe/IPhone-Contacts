@@ -5,7 +5,7 @@ class UserAttributeViewCell : UITableViewCell {
     
     static let identifier = "UserAttributeViewCell"
 
-    // MARK: Views
+    // MARK: - Views
     var textField: UITextField = {
         let textField = UITextField()
         textField.textColor = .black
