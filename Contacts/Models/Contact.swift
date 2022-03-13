@@ -14,7 +14,7 @@ struct Contact {
     var phoneNumber: [Int]?
     var email: [String]?
     
-    var melody: String?
+    var sound: String?
     var signal: String?
     
     var urlAdress: [String]?
